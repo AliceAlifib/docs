@@ -3,28 +3,14 @@ title: "Connect your agent"
 description: "Wire your own Claude Code into the project record."
 ---
 
-Alice.In does not run an AI agent for you. It connects to the one you already use, on your machine, on your own subscription.
+Alice.In does not run an AI agent for you. It connects to the [Claude Code](https://claude.com/claude-code) you already use, on your machine and your own subscription. The app's **Connect a repo** panel walks you through it and lists what is already connected.
 
-## One command
-
-You do not have to type this out or look anything up. In the app, open **Connect a repo** — it shows you the exact line, already filled in with your workspace address and your token. Press **Copy install line**.
-
-Then paste it into a terminal, **from your project's folder**, with [Claude Code](https://claude.com/claude-code) installed and signed in to your own account:
-
-```bash
-curl -fsSL https://your-workspace-address/install.sh | sh -s -- --token YOUR_TOKEN --url https://your-workspace-address/mcp
-```
-
-<Note>
-Copy the line from the **Connect a repo** panel rather than retyping the example above — the panel fills in your own address and token, and it always matches the current installer.
-</Note>
-
-It writes two plain files you can read, edit or delete:
+Connecting adds two plain files to your project, which you can read, edit or delete at any time:
 
 - **`.mcp.json`** — registers the connection to your workspace.
 - **A block in `CLAUDE.md`** — teaches your agent the protocol: orient from the project record, log what it does, pull queued work, and propose changes for your approval.
 
-That is the whole install. Nothing runs in the background.
+Nothing runs in the background, and nothing about your existing setup changes.
 
 ## What changes in your sessions
 
@@ -51,7 +37,7 @@ Any card offers its context as markdown you can copy and paste into Cursor, Chat
 
 Once connected, the commits your agent records are matched to your modules by the files they changed, so recently worked parts of your system read as active on the [factory map](/using/factory-map).
 
-You can connect more than one repository — open **Connect a repo** in the app for the install line and the list of what is already connected.
+You can connect more than one repository — **Connect a repo** in the app shows what is already connected.
 
 <Note>
 We never see or spend your Claude account, and we never ask for its credentials. The connection carries your project's record, nothing else.
