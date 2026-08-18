@@ -1,0 +1,45 @@
+---
+title: "Bringing in existing work"
+description: "Linear, Trello, Jira, a spreadsheet, or a document."
+---
+
+Most people arrive with a plan already living somewhere else. You do not have to retype it, and you do not have to wait for us to build an integration.
+
+**Your agent does the import.** It can already reach your other tools, and it can write into your project graph. Those two facts are the integration.
+
+## How it works
+
+Once your agent is [connected](/using/connect-your-agent), give it access to the tool your work lives in — Linear, Trello, Jira, GitHub Issues, Notion — the same way you would for any other task, using that tool's own connector or API token. Then ask for the import in plain language:
+
+> Read my Linear issues for the current cycle, and create a card in alicein under the right enabler for each one. Use my labels to decide which enabler. Skip anything already closed.
+
+Your agent reads the source, decides where each item belongs in your plan, and creates the cards. You watch them appear on the map.
+
+<Note>
+Give it your credentials for the other tool, never the other way round. Alice.In does not ask for, hold, or store tokens for your other services — the connection is between your agent and that tool, on your machine.
+</Note>
+
+## Worth saying in the prompt
+
+- **Where things should land.** "Everything labelled `infra` goes under the deployment enabler." Otherwise it will guess, and guesses are what you will spend the evening correcting.
+- **What to skip.** Closed issues, someone else's backlog, the graveyard column.
+- **How much to bring.** The current cycle usually beats the entire history. You can always import more later.
+- **Whether to bring the discussion.** Long comment threads can come across as a card's description, or be left behind.
+
+## Other sources
+
+The same approach works for anything your agent can read:
+
+- **A document or spreadsheet** — "turn this roadmap doc into phases and enablers."
+- **A repository** — issues, milestones, or a `TODO.md`.
+- **A conversation** — paste the notes from a planning call and ask for cards.
+
+## Check it before you trust it
+
+An import is a first draft of your plan in our shape. Walk the map afterwards and fix what landed in the wrong place — drag enablers between phases, rename what reads badly, delete the noise.
+
+Ten minutes of tidying at the start is what makes the map worth looking at later, and it is much cheaper than correcting a plan you never really read.
+
+## Going the other way
+
+There is no export integration yet. Your record is a git repository, and we will hand you everything in it — or delete all of it — whenever you ask.

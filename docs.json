@@ -21,20 +21,30 @@
             ]
           },
           {
-            "group": "Concepts",
+            "group": "Using Alice.In",
             "pages": [
-              "concepts/project-brain",
-              "concepts/clawbots",
-              "concepts/sprites",
-              "concepts/openclaw"
+              "using/project-map",
+              "using/agent-queue",
+              "using/connect-your-agent",
+              "using/importing-your-work",
+              "using/needs-you",
+              "using/alice-chat",
+              "using/factory-map",
+              "using/shortcuts"
             ]
           },
           {
-            "group": "Using Brain",
+            "group": "Concepts",
             "pages": [
-              "guides/commands",
-              "guides/tones",
-              "guides/memory"
+              "concepts/project-graph",
+              "concepts/memory",
+              "concepts/how-work-is-organized"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "troubleshooting"
             ]
           }
         ]

@@ -1,57 +1,73 @@
 ---
 title: "Quickstart"
-description: "Your first session with Brain."
+description: "Set up in about ten minutes."
 ---
 
-You're already signed up. Here's how to actually use Alice.In.
+Steps 1–5 happen entirely in your browser — you get a working product even if you never connect an agent. The last step connects the AI agent you already use, and that is where it gets good.
 
-## 1. Open your workspace
+<Steps>
+  <Step title="Open your workspace">
+    We send you a link and a **token**. Keep the token like a password — it is what identifies your workspace.
 
-Launch the Alice.In app. You'll land in your 3D project graph — your **purpose** is at the center, with **goals**, **milestones**, **enablers**, and **tasks** branching out from it.
+    Your workspace holds your project's live map and its memory: everything decided, everything done, everything pending.
+  </Step>
 
-If the graph is empty, that's fine. Brain will help you fill it.
+  <Step title="Tell it what you are building">
+    Describe your project in your own words, and give us your GitHub repository URL. Public repositories work as they are; a private one needs an access token and we will walk you through it.
 
-## 2. Talk to Brain
+    You are not filling in a project management tool. You are describing the thing, once.
+  </Step>
 
-Brain is your AI co-founder. She knows your full project — every decision logged, every task tracked, every milestone hit or missed.
+  <Step title="Watch your workspace get built">
+    In about a minute, two things exist that you did not have to draw:
 
-Just type. Examples:
+    - **A starter plan** — goals, phases and enablers, inferred from what you described. This is a first draft with your project's actual shape in it, not an empty template.
+    - **[A factory map](/using/factory-map)** — your services, libraries and external dependencies, read out of your code and laid out as a place you can walk through.
 
-- *"What's the next thing I should work on?"*
-- *"Log a decision: we're using Postgres, not Mongo."*
-- *"Add a milestone for closed beta by June."*
-- *"What did I decide about auth last week?"*
+    Expect the starter plan to be roughly right and specifically wrong. That is the point — correcting a draft takes minutes, and starting from a blank page takes a week.
+  </Step>
 
-She'll read the graph, update it when you ask, and push back when something doesn't make sense.
+  <Step title="Correct it, and make it yours">
+    Open [the project map](/using/project-map) and shape the draft into your real plan: drag enablers onto the phase they belong to, rename what reads badly, delete what is not real, add what is missing.
 
-## 3. Switch how she thinks
+    Already have a plan in Linear, Trello or a document? Do not retype it — see [Bringing in existing work](/using/importing-your-work).
+  </Step>
 
-Two quick controls:
+  <Step title="Look around">
+    Four surfaces, nothing installed:
 
-- **Model**: `/model flash` (fast) or `/model pro` (deeper reasoning)
-- **Tone**: `/set-tone direct`, `/set-tone energized`, or `/set-tone coach`
+    - **[The project map](/using/project-map)** — your plan: phases, enablers and cards.
+    - **[The factory map](/using/factory-map)** — your system: modules and how they connect.
+    - **[Alice](/using/alice-chat)**, bottom right — ask "where are we?", "what needs me?", "why did we do X?"
+    - **[Needs you](/using/needs-you)** — the one queue where things wait for your judgment.
 
-See [Commands](/guides/commands) for the full list.
+    Press `?` at any point for the [keyboard shortcuts](/using/shortcuts).
+  </Step>
 
-## 4. Spawn a ClawBot
+  <Step title="Connect your Claude Code">
+    In the app, open **Connect a repo** and press **Copy install line** — it is already filled in with your workspace address and token.
 
-ClawBots are role-specific sub-agents. Use them when you want a focused operator instead of Brain herself.
+    Paste it into a terminal, from your project's folder, with [Claude Code](https://claude.com/claude-code) installed and signed in to your own account. It looks like this:
 
-```
-/configure-agent
-```
+    ```bash
+    curl -fsSL https://your-workspace-address/install.sh | sh -s -- --token YOUR_TOKEN --url https://your-workspace-address/mcp
+    ```
 
-Brain will interview you and generate the configs for the new bot.
+    Full detail in [Connect your agent](/using/connect-your-agent).
 
-More: [ClawBots](/concepts/clawbots).
+    Then, in your normal sessions: say **"get the alicein context"** and your agent knows the whole project. Hand it work with [the agent queue](/using/agent-queue).
+  </Step>
+</Steps>
 
-## What's next
+## Your first hour, if you want a path
 
-<CardGroup cols={2}>
-  <Card title="Concepts" icon="book" href="/concepts/project-brain">
-    Understand the pieces — Brain, ClawBots, Sprites, OpenClaw.
-  </Card>
-  <Card title="Commands" icon="terminal" href="/guides/commands">
-    Every slash command, one page.
-  </Card>
-</CardGroup>
+1. **Correct the draft.** Ten minutes on the map: right phases, right names, nothing fictional left in it.
+2. **Write down one decision** you have already made, and why, on the card it belongs to. That is the record starting.
+3. **Connect your agent**, say "get the alicein context", and ask it what it thinks you should do next. The answer tells you how good your plan is.
+4. **Queue one card** and let it do the work. Watch it come back for review.
+
+## What to expect
+
+- **Your agent runs on your machine and your own Claude subscription.** We never see it or spend it.
+- **Your workspace is isolated per account.** We export or delete everything on request.
+- **This is a beta.** With your permission we watch first sessions, precisely to fix what snags you.

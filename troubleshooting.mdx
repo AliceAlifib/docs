@@ -1,0 +1,50 @@
+---
+title: "Troubleshooting"
+description: "The things that go wrong first."
+---
+
+<AccordionGroup>
+  <Accordion title="My agent does not seem to know about the project">
+    Ask it to **"get the alicein context"** explicitly. If it says it has no such tool, the connection is not registered: check that `.mcp.json` exists in the folder you started the session from, and restart the session — Claude Code reads it at startup.
+  </Accordion>
+
+  <Accordion title="The install command failed">
+    Run it from your project's folder, not your home directory, and make sure Claude Code is installed and signed in first. The command needs the URL and the token we sent you, both filled in.
+  </Accordion>
+
+  <Accordion title="I queued a card and nothing happened">
+    The queue is a pull model, on purpose. Nothing runs until you ask your agent to **"check my alicein queue"** in a terminal. Your machine, your subscription, your timing.
+  </Accordion>
+
+  <Accordion title="A card says 'review' — what do I do?">
+    Your agent finished it and handed it back. Open the card, read what it did and its comment thread, then check it off if you are satisfied. Delivered is not done; you close it.
+  </Accordion>
+
+  <Accordion title="The starter plan it generated is wrong">
+    Expected. It is a first draft read out of what you described and what is in your code — roughly right, specifically wrong. Drag, rename and delete until it is your real plan. If it is *badly* wrong, tell us: that is a signal about the inference, and we want it.
+  </Accordion>
+
+  <Accordion title="Can I import my Linear or Trello board?">
+    Yes — your agent does it, no integration required. See [Bringing in existing work](/using/importing-your-work).
+  </Accordion>
+
+  <Accordion title="My factory map looks out of date">
+    Beta maps do not yet redraw themselves as a repository drifts. If your code has changed shape substantially, tell us and we will rebuild the map.
+  </Accordion>
+
+  <Accordion title="The screen is blurred and there is an overlay">
+    That is the first-run walkthrough. Dismiss it and it stays dismissed.
+  </Accordion>
+
+  <Accordion title="Escape is not closing anything">
+    You are probably in full screen, where the browser takes `Esc` for itself. Use `` ` `` or `q` instead. See [Keyboard shortcuts](/using/shortcuts).
+  </Accordion>
+
+  <Accordion title="Two numbers disagree">
+    They should not — every surface counts the same list. If you catch one that does, that is a bug worth telling us about immediately, because it is exactly the failure we designed against.
+  </Accordion>
+</AccordionGroup>
+
+## Still stuck
+
+Message us directly. That is the beta arrangement: you get the product early, we get to watch it meet reality.

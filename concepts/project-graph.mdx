@@ -1,0 +1,41 @@
+---
+title: "The project graph"
+description: "The one place your project actually lives."
+---
+
+Everything in Alice.In — both maps, the queue, the chat, the review inbox — is a view onto a single underlying thing: your **project graph**.
+
+The graph holds the shape of your work and the record of it, connected. Not two systems that have to be kept in sync. One.
+
+## What is in it
+
+- **The shape** — goals, phases, enablers, cards and their checklists.
+- **The decisions** — every call you have made, with the reasoning that produced it.
+- **The events** — what actually happened: work done, commits landed, work delivered, questions asked.
+- **The artifacts** — documents produced along the way, attached where they belong.
+- **The system** — the modules of your codebase, and which work touched which module.
+
+Every one of those is connected to the others. A card knows the decisions that shaped it. A decision knows the events that led to it. A module knows the work that changed it. That is what makes "why is this here?" an answerable question months later.
+
+## Why it matters
+
+Tools that track your work forget why. Tools that talk to you forget everything. The graph is the thing neither of them has: a project's shape and its reasoning, in one record, that both you and your agents read and write.
+
+Practically, this is what you get from it:
+
+<CardGroup cols={2}>
+  <Card title="Context in" icon="arrow-right-to-bracket">
+    Your agent starts every session knowing the whole project — not the fragment you remembered to paste in.
+  </Card>
+  <Card title="Context out" icon="arrow-right-from-bracket">
+    What your agent does and decides flows back into the record, so the next session — yours or anyone's — inherits it.
+  </Card>
+</CardGroup>
+
+That loop is the product. The maps are how you see it.
+
+## The graph is yours
+
+You edit it directly. Drag an enabler to a new phase, rewrite a card, mark a checklist item done — that is the real graph changing, not a display setting.
+
+Your agent can propose changes to the structural parts, but proposals wait in [Needs you](/using/needs-you) until you ratify them. You stay editor-in-chief.

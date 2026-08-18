@@ -1,0 +1,54 @@
+---
+title: "The agent queue"
+description: "How you hand work to your agent, and how it comes back."
+---
+
+The queue is the hand-off point between the plan and the work. You put cards in it; your agent takes them out; the result comes back to you for review.
+
+It is a **pull** model, deliberately. Nothing starts on its own. Work happens when you open a terminal and ask for it — on your machine, on your subscription, at your timing.
+
+## Putting work in
+
+From any card, press **Queue for agent**. You can also drag a card straight onto the queue button.
+
+Order matters: drag rows in the queue panel to reprioritise. Your agent takes from the top.
+
+## Taking work out
+
+In a terminal, in your project, ask your agent:
+
+> check my alicein queue
+
+It pulls the top card it is allowed to work — with a **context pack**, not just a title:
+
+- the card itself: description, checklist, notes, links
+- where it sits: which enabler, which phase, which goal
+- the record behind it: the events and decisions that already touch this work
+- any design document the card is tagged with
+
+That is the difference between "build a login page" and your agent knowing why you chose the auth approach you chose three weeks ago.
+
+## Reading the queue
+
+Each row shows its state:
+
+| State | What it means | What you do |
+|---|---|---|
+| **queued** | Waiting to be pulled | Nothing — or reorder it |
+| **pulled** | Your agent is working on it | Nothing |
+| **review** | Delivered, waiting on you | Open the card, read it, check it off |
+| **answer** | Your agent asked you something | Open it and answer |
+
+<Note>
+**Delivered is not done.** When a card comes back as *review*, your agent considers its part finished — but the card closes when **you** close it. If it is not right, say so in the card's comment thread and put it back in the queue.
+</Note>
+
+## Reviewing what came back
+
+Open the card. You get what changed, the agent's own note on why, and the comment thread — your agent replies there, so the review is a conversation on the card rather than in a chat window you will lose.
+
+The card's **History** shows every event and decision attached to it, so you can see the work in the context of everything that came before it.
+
+## Using a different tool
+
+Any card can hand you its context pack as markdown. Copy it, paste it into Cursor or anything else, and work there. You keep the context; you lose the automatic logging of what happened.

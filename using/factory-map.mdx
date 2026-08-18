@@ -1,0 +1,39 @@
+---
+title: "The factory map"
+description: "Your system as a place you can walk through."
+---
+
+Point Alice.In at a repository and it infers the shape of your system: services, libraries, local tools and the external services you depend on. The result is a map you can walk, not a diagram someone drew once and forgot.
+
+## First run
+
+The map builds itself in front of you the first time — watch it construct. It takes about a minute.
+
+You do not draw anything. Alice.In reads the code and infers the structure: what is a service, what is a library, what is a tool you run locally, and what you depend on from outside.
+
+## Reading it
+
+- **Modules** are laid out in districts, with the external services you call sitting on the outer ring.
+- **Edges** are the connections between them, typed: `HTTP`, `MCP`, `OTEL`, `WS`, `DEP`.
+- **Tiers** distinguish a service from a library, a local tool, or something external.
+
+## Peeling it back
+
+Behind the gear you can toggle each connection type and each module tier on and off. A map showing everything at once shows nothing, so turn layers off until only the question you are asking is left. Your choices persist between sessions.
+
+Hover or click a module and only *its* edges label themselves — no global clutter.
+
+## The module panel
+
+Click any module for what it is, what it connects to, which files belong to it, and what is happening inside it now. Ask a question there and the answer comes back grounded in the real files, with receipts.
+
+## Flows and the walkthrough
+
+- **Flows** are curated stories of how data actually moves through your system, played out on the map.
+- **The walkthrough** is a guided first tour. Dismiss it any time; it will not come back uninvited.
+
+## Recent work shows on the map
+
+Once you have [connected your agent](/using/connect-your-agent), the commits it records are matched against your modules by the files they touched. A module that has been worked on recently reads as active, and one worked on in the last day reads as fresh.
+
+Over a week, the map shows you where the effort actually went — which is not always where you thought it went.
