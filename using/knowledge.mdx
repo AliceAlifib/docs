@@ -1,0 +1,61 @@
+---
+title: "The knowledge view"
+description: "Read everything your project knows, and follow how one record led to another."
+---
+
+The third view, beside the project map and the factory map. The maps show your work and your system; this shows what your project *knows* — and, more usefully, how each thing it knows connects to everything else.
+
+A context layer nobody can inspect is one nobody can trust. This is where you inspect it.
+
+## What is in it
+
+Down the left, your project's knowledge by kind, each with a live count:
+
+| | |
+|---|---|
+| **Standing** | What the project *is* — identity, positioning, voice. The documents your agents read to understand you. |
+| **Knowledge** | What you have learned: research, analyses, runbooks. |
+| **Decisions** | Every call made, with its reasoning. |
+| **Plans** | Design documents for work you intend to do. |
+| **Lessons** | Rules the project taught your agents, each citing the event that taught it. |
+| **Attached notes** | Short notes bound to a specific file, module or card — see [Memory](/concepts/memory). |
+| **Proposals** | Changes an agent has put to you. |
+| **Activity** | What happened: work done, commits, deliveries, questions. |
+| **Subjects** | The parts of your system things are recorded against. |
+| **Work** | Your cards and enablers, as records with links rather than as a board. |
+
+Search across all of it by text or by record ID.
+
+## Reading a record
+
+Every record opens on three tabs.
+
+- **Connections** — what it points to on the left, what points to it on the right, with the relationship named on each link: *evidence*, *corrects*, *supersedes*, *about*. Filter to one relationship when the list gets busy. Select any neighbour to walk to it, and a trail of crumbs lets you walk back.
+- **Original record** — the record itself, as it was written. Nothing rewritten, nothing summarised.
+- **What changed** — the corrections, replacements and promotions recorded against it, oldest first. This is the chain of how your project's thinking moved.
+
+If a correction exists, the record says so at the top before you read a word of it. An empty "what changed" tab does not mean a record is current — it means nothing has been recorded against it, which is a different claim, and the page says that too.
+
+## The connection atlas
+
+Behind the atlas button: a grid of every kind against every other, showing how many recorded links run between them. Darker means more; blank means none recorded.
+
+It answers the question you cannot answer by reading records one at a time — do our decisions actually cite evidence, or do they float? Select any square to read the individual links behind the number.
+
+A blank square means no explicit link was recorded. It does not mean the two are unrelated.
+
+## Editing your standing documents
+
+Standing documents are the ones you can edit here directly, because they are yours rather than the record's.
+
+Open one, press **Edit document**, and you get a review screen showing the saved version beside your new one before anything is written. The checkbox on the editor decides whether the document rides in *every* agent session or is fetched only when needed.
+
+<Warning>
+The **overview** document is asserted to every agent, in every session, with full confidence, until someone changes it. Keep it to what is true and stable. Anything that can be counted or that moves on its own should not be in there — the system computes those, and a stale sentence here is worse than a missing one.
+</Warning>
+
+The version from immediately before each save is kept, so one save is undoable.
+
+## It updates while you read
+
+The view refreshes itself every few seconds, so an import or an agent session running in another window fills it in front of you. A draft you are part-way through editing is never clobbered by a refresh.

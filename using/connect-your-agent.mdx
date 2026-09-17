@@ -1,44 +1,114 @@
 ---
 title: "Connect your agent"
-description: "Wire your own Claude Code into the project record."
+description: "Wire the coding agent you already use into your project record."
 ---
 
-Alice.In does not run an AI agent for you. It connects to the [Claude Code](https://claude.com/claude-code) you already use, on your machine and your own subscription. The app's **Connect a repo** panel walks you through it and lists what is already connected.
+Alice.In does not run an AI agent for you. It connects to the agent you already use, on your machine and your own subscription. [Claude Code](https://claude.com/claude-code) is the fullest experience; Codex and Grok reach the same workspace.
 
-Connecting adds two plain files to your project, which you can read, edit or delete at any time:
+## Before you start
 
-- **`.mcp.json`** — registers the connection to your workspace.
-- **A block in `CLAUDE.md`** — teaches your agent the protocol: orient from the project record, log what it does, pull queued work, and propose changes for your approval.
+Have your agent installed and signed in first — [Claude Code](https://claude.com/claude-code), Codex or Grok Build, on your own account. Alice.In connects to it; it does not install it for you.
+
+You also need **Node 18 or newer**, because the capture hooks are Node scripts. The installer checks and stops with a clear message if it is missing.
+
+## Installing
+
+On the project map, open the **⚙** at the bottom right, beside the agent-queue button, and press **Open** on *Connect a repo*.
+
+The panel shows your door URL, the repos already connected, and a row of agent buttons — **Both**, **Claude Code**, **Codex** or **Grok Build**. Press **Generate install command**, and paste the one-liner into a terminal inside the repo you want your agent to work in.
+
+<CodeGroup>
+```bash macOS, Linux, Git Bash
+curl -fsSL https://<your-hub>/install.sh | sh -s -- --token <your-token> --url https://<your-hub>/mcp
+```
+
+```powershell Windows PowerShell
+& ([scriptblock]::Create((irm https://<your-hub>/install.ps1))) --token <your-token> --url https://<your-hub>/mcp
+```
+</CodeGroup>
+
+<Note>
+`curl … | sh` does not run in PowerShell, which is why there are two lines. Everything underneath is the same plain Node script either way.
+</Note>
+
+**Which agent button to pick.** *Both* is the default and wires Claude Code and Codex together — if you have one of them, the unused config just sits there doing nothing. The named buttons exist so the line you copy talks about the agent you actually use.
+
+**Grok Build users should pick Grok Build**, not Claude Code. Grok reads Claude Code's wiring natively, with one exception: it cannot follow the `@import` line in `CLAUDE.md`, so picking *Claude Code* leaves you with the connection and the hooks but no brief at all. The Grok option inlines it instead.
+
+Add `--dir <path>` to target a different folder. Re-running is safe — it updates in place and never duplicates anything.
+
+You can connect as many repositories as you like. **Connect a repo** lists what is already connected, and each install command carries its own token, so revoking one repo leaves the others working.
+
+## What gets installed
+
+Plain files, all of them readable, editable and deletable:
+
+| | |
+|---|---|
+| `.mcp.json` | Registers the connection. Any MCP servers you already had are kept. |
+| `.claude/alice/` | Your agent's brief, the capture hooks, and your config. |
+| `CLAUDE.md` | One line that loads the brief every session. |
+| `.claude/settings.json` | Four lightweight hooks that keep your workspace in sync as you work. |
+| `.claude/skills/alice-onboard` | The `/alice-onboard` command. Codex and Grok reach the same flow through `AGENTS.md`. |
 
 Nothing runs in the background, and nothing about your existing setup changes.
+
+<Note>
+**Your token never goes into `.mcp.json`.** That file is meant to be committed and shared with your team, so it gets a small helper command that reads the token from `.claude/alice/config.json` instead — and the installer adds that file to your `.gitignore`. A teammate who clones the repo inherits the wiring and supplies their own token.
+
+This needs Claude Code 2.1.193 or newer. On an older build the installer can fall back to writing the token into `.mcp.json` directly, in which case keep the repo private.
+</Note>
+
+## If you use Codex or Grok
+
+<Warning>
+**Codex asks you to trust twice** the first time you open it in the repo — once for the folder, once for the hooks file. Accept both. An untrusted folder loads no tools at all, and nothing tells you why.
+</Warning>
+
+**Grok Build** reads Claude Code's files, so the install puts the same wiring in place plus a brief Grok can load. Trust the folder the first time you open it, then run `grok inspect` to see the door, the brief and the hooks it found.
+
+Neither has a per-repo skills folder, so they reach [onboarding](/using/onboarding) through a line in `AGENTS.md` — say "onboard this project" rather than typing a slash command.
+
+## Check it worked
+
+- Run `/mcp` in Claude Code. **alicein** should be listed. In Grok, `grok inspect`.
+- Ask **"where are we?"**. It should answer from your real project — your phases, recent activity, anything queued for it — not from a blank slate.
+
+If your workspace is still empty, this is the moment to run [`/alice-onboard`](/using/onboarding).
 
 ## What changes in your sessions
 
 <CardGroup cols={2}>
   <Card title="It arrives oriented" icon="compass">
-    Say **"get the alicein context"** and your agent knows the whole project state — phases, active work, recent decisions, what is waiting on you.
+    Your agent starts knowing the whole project — phases, active work, recent decisions, what is waiting on you.
   </Card>
   <Card title="It leaves a record" icon="pen">
-    Work normally. Your agent logs what it did and why into your project record, so nothing you build stays unexplained.
+    Work normally. It captures what it did and why as it goes, so nothing you build stays unexplained.
+  </Card>
+  <Card title="Files brief it as it opens them" icon="file-lines">
+    The moment it reads or edits a file, whatever your project already learned about that file is handed to it. If nothing is recorded, it says so plainly — so "nothing known" never looks like "not working".
   </Card>
   <Card title="It picks up queued work" icon="inbox-in">
     Press **Queue for agent** on a card, then say **"check my alicein queue"**. The card arrives with its full context pack.
+  </Card>
+  <Card title="Commits light the map" icon="code-commit">
+    Every commit is captured and matched to the part of your system it touched. You add the why.
   </Card>
   <Card title="It proposes, you decide" icon="check">
     Changes to plans and decisions land in [Needs you](/using/needs-you) for you to ratify. Nothing structural changes without you.
   </Card>
 </CardGroup>
 
+For the full picture of what it can and cannot do, see [What your agent can do](/concepts/what-your-agent-can-do).
+
 ## Using a different tool
 
-Any card offers its context as markdown you can copy and paste into Cursor, ChatGPT, or whatever you prefer. You lose the automatic logging, not the context.
+Any card offers its context as markdown you can copy into Cursor, ChatGPT, or whatever you prefer. You lose the automatic capture, not the context.
 
-## Your work shows on the map
+## Uninstalling
 
-Once connected, the commits your agent records are matched to your modules by the files they changed, so recently worked parts of your system read as active on the [factory map](/using/factory-map).
-
-You can connect more than one repository — **Connect a repo** in the app shows what is already connected.
+A minute by hand: delete `.claude/alice/` and `.claude/skills/alice-onboard/`, remove the `@.claude/alice/ALICE-COFOUNDER.md` line from `CLAUDE.md`, remove the `alicein` entry from `.mcp.json`, and remove the four `.claude/alice/hooks.mjs` entries from `.claude/settings.json`. Then restart your agent.
 
 <Note>
-We never see or spend your Claude account, and we never ask for its credentials. The connection carries your project's record, nothing else.
+We never see or spend your Claude account, and we never ask for its credentials.
 </Note>

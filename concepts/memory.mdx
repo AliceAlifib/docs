@@ -1,36 +1,54 @@
 ---
 title: "Memory"
-description: "What the system remembers, and why answers come with citations."
+description: "What the system remembers, how it reaches your agents, and why answers come with citations."
 ---
 
-The project record is kept by the system, not by your discipline. You do not maintain it; you use it.
+The project record is kept by the system, not by your discipline. You do not maintain it; you use it. [The knowledge view](/using/knowledge) is where you read all of it.
 
-## What it keeps
+## Where a thing goes
 
-- **Why** — the decisions, with their reasoning, in the order you made them.
-- **What happened** — an append-only log of work, commits, deliveries and questions.
-- **What was produced** — artifacts attached to the part of the project they belong to.
-- **What was learned** — a lesson one agent learns is served to every agent, and has to cite the event that taught it.
+Memory is not one undifferentiated pile. Where something lands decides when it comes back to you, which is the part that matters.
 
-Nothing is overwritten. When something is superseded, the old entry stays and the new one supersedes it — so the history of your thinking survives, not just its current state.
+| | What it holds | When it reaches an agent |
+|---|---|---|
+| **Standing documents** | What the project *is* — identity, positioning, voice. | Every session, in full. |
+| **Events** | What happened: conclusions, dead ends, changes of direction. | Recent ones at session start; the rest by search. |
+| **Decisions** | Every call made, with its reasoning. | Recent ones at session start; the rest on request. |
+| **Knowledge** | Research, analyses, runbooks — what you have learned. | Listed at session start, read on demand. |
+| **Plans** | Design documents for work you intend to do. | Attached to a card, opened before the work starts. |
+| **Lessons** | Rules the project taught your agents. | Served automatically, and each must cite the event that taught it. |
+| **Attached notes** | One or two sentences bound to a specific file, module or card. | Handed over the moment an agent opens that thing. |
+
+That last one is the quiet one. "This function takes cents, not dollars" does not need anybody to remember to look it up — it arrives when the file is opened, before the mistake.
+
+## Nothing is overwritten
+
+When something is superseded, the old record stays and the new one supersedes it. You keep the history of your thinking, not just its current state, and every record shows the chain both ways: what corrected it, what it corrected.
+
+An agent that finds a correction follows it. One that finds a record with no corrections is told that this alone does not make the record current — which is a different, and more honest, claim.
 
 ## Answers come with receipts
 
-Ask Alice why something is the way it is and she shows you what she read. Every card carries a **History** section: the events and decisions that name it, in one place.
+Ask why something is the way it is and you are shown what was read. Every card carries a **History** of the events and decisions that name it.
 
 This is deliberate. An AI that recalls is guessing; one that cites is answerable. If the record does not know, you get told it does not know.
 
 ## Nothing goes stale quietly
 
-Every surface knows whether what it is showing is derived live, rebuilt automatically, or written prose that is now ageing — and it says so, with an "as of" date.
+Every surface knows whether what it shows is derived live, rebuilt automatically, or written prose that is now ageing — and says so, with an "as of" date.
 
-Confidently wrong is worse than empty. A blank panel makes you go and look. A stale one that sounds certain does not.
+Confidently wrong is worse than empty. A blank panel sends you to look. A stale one that sounds certain does not.
+
+## Capture is not a chore you do at the end
+
+Your agent records as it works: the conclusion when it reaches one, the dead end when it hits one. A note written while the reasoning is hot says why; one written at the end of the session says what.
 
 ## What you can do
 
 - **Tell it to remember something.** Say it in chat and it goes into the record.
-- **Read anything.** There is no hidden state — every entry is inspectable.
-- **Export or delete everything.** Ask us and it is done. Your record is a git repository, backed up nightly.
+- **Read anything.** There is no hidden state — every record is inspectable in [the knowledge view](/using/knowledge).
+- **Edit what the project stands for.** Standing documents are yours to rewrite, with a review screen before every save.
+- **Export or delete everything.** Ask and it is done. Your record is a git repository, backed up nightly.
 
 ## What it never keeps
 

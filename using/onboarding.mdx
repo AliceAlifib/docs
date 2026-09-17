@@ -1,0 +1,76 @@
+---
+title: "Onboarding, inside your agent"
+description: "Your agent reads your repos, interviews you, and writes your project down."
+---
+
+Setting up Alice.In is a conversation with your own agent, not a form. It reads before it asks, interviews you in rounds, then writes your project down and shows you every word before saving it.
+
+Run it once your agent is [connected](/using/connect-your-agent):
+
+<CodeGroup>
+```text Claude Code
+/alice-onboard
+```
+
+```text Codex or Grok
+onboard this project
+```
+</CodeGroup>
+
+**The rule underneath the whole flow: your agent does the looking, you do the deciding.** It never asks you to type something it could have read.
+
+## What happens, in order
+
+<Steps>
+  <Step title="Which repos are this project">
+    It names the repo you are standing in, lists the others on your GitHub account by most recent push, and asks which of them belong to this project. Add anything the list cannot see — a repo you contribute to but do not own, or one that is not on GitHub at all.
+  </Step>
+
+  <Step title="It reads them">
+    Your agent builds a local digest of those repos: descriptions, READMEs, languages, recent pull requests, open issue counts, ninety days of commit subjects, branches, layout, package manifests.
+
+    **This step runs entirely on your machine.** No model sees it but your own agent, and nothing leaves your computer.
+
+    If a repo could not be read — not cloned locally, private and out of token reach, an org behind SSO — it says which one and asks about it rather than reading the gap as "small project".
+  </Step>
+
+  <Step title="The interview">
+    Now it asks, in rounds of a few questions at a time, each with the answer it would give so you can agree by exception. In Claude Code these arrive as the normal multiple-choice prompts you already answer things with.
+
+    It opens with what it already believes, so the first round is you correcting it rather than explaining from scratch. What it is trying to learn: what this is in a sentence you would recognise as yours, who it is for, what success looks like and by when, what is built versus planned, the decisions a reader could never infer from the code, and what worries you.
+
+    Stop whenever you like. The graph is built to be added to.
+  </Step>
+
+  <Step title="It writes what your project is">
+    Two standing documents. **Overview** — what the project is and how you work — rides in every future session's context. **Positioning** is optional, fetched when it is needed.
+
+    You see the full text and say yes before anything is saved. That is enforced, not etiquette: a save with no preview you approved in the last thirty minutes is refused, and so is one whose text changed after you read it.
+  </Step>
+
+  <Step title="It writes your plan">
+    Phases, the enablers under each, and a handful of starter cards — shown to you as a shape first, saved only after you agree. Same thirty-minute preview rule.
+
+    Expect it sparse: two to four phases, a few enablers each. A thin tree you will edit beats a thick one you will abandon.
+  </Step>
+
+  <Step title="It draws your factory map">
+    Finally it proposes the districts and modules of your system, each one tied to files it actually saw in your repos. Agree to the list, refresh the app, and [the factory map](/using/factory-map) is your system rather than a placeholder.
+  </Step>
+</Steps>
+
+## Already tracking work somewhere else
+
+If you use Linear, say so during the interview and it comes across in the same session — pulled, mapped into phases, enablers and cards, and grouped so you answer once about the parts it cannot place confidently instead of forty times.
+
+Other trackers do not have a puller yet, but your agent can still import them by reading them directly. See [Bringing in existing work](/using/importing-your-work).
+
+## If something goes wrong halfway
+
+The moment the interview ends, your agent writes your answers to a file in your repo before it calls anything. If the workspace is unreachable at that moment, you lose no time — it tells you where your answers are and lands them when the connection is back.
+
+## Running it again later
+
+`seed_project` and the factory map are one-time writes by design. If your workspace already has real content, onboarding refuses to overwrite it and adds what is missing card by card instead, for you to ratify. That refusal is the guard working.
+
+For everything after the first run, change things directly: drag enablers on [the project map](/using/project-map), edit standing documents in [the knowledge view](/using/knowledge), or just tell your agent what changed.

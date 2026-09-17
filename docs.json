@@ -23,13 +23,15 @@
           {
             "group": "Using Alice.In",
             "pages": [
-              "using/project-map",
-              "using/agent-queue",
               "using/connect-your-agent",
-              "using/importing-your-work",
+              "using/onboarding",
+              "using/project-map",
+              "using/factory-map",
+              "using/knowledge",
+              "using/agent-queue",
               "using/needs-you",
               "using/alice-chat",
-              "using/factory-map",
+              "using/importing-your-work",
               "using/shortcuts"
             ]
           },
@@ -38,6 +40,7 @@
             "pages": [
               "concepts/project-graph",
               "concepts/memory",
+              "concepts/what-your-agent-can-do",
               "concepts/how-work-is-organized"
             ]
           },

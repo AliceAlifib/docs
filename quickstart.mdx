@@ -1,65 +1,70 @@
 ---
 title: "Quickstart"
-description: "Set up in about ten minutes."
+description: "From a link to a project your agent knows."
 ---
 
-Steps 1–5 happen entirely in your browser — you get a working product even if you never connect an agent. The last step connects the AI agent you already use, and that is where it gets good.
+Setting up is a conversation with your own coding agent. It reads your repos, asks you what it could not read, and writes your project down — you correct it rather than filling it in.
 
 <Steps>
   <Step title="Open your workspace">
     We send you a link and a **token**. Keep the token like a password — it is what identifies your workspace.
 
-    Your workspace holds your project's live map and its memory: everything decided, everything done, everything pending.
-  </Step>
-
-  <Step title="Tell it what you are building">
-    Describe your project in your own words, and give us your GitHub repository URL. Public repositories work as they are; a private one needs an access token and we will walk you through it.
-
-    You are not filling in a project management tool. You are describing the thing, once.
-  </Step>
-
-  <Step title="Watch your workspace get built">
-    In about a minute, two things exist that you did not have to draw:
-
-    - **A starter plan** — goals, phases and enablers, inferred from what you described. This is a first draft with your project's actual shape in it, not an empty template.
-    - **[A factory map](/using/factory-map)** — your services, libraries and external dependencies, read out of your code and laid out as a place you can walk through.
-
-    Expect the starter plan to be roughly right and specifically wrong. That is the point — correcting a draft takes minutes, and starting from a blank page takes a week.
-  </Step>
-
-  <Step title="Correct it, and make it yours">
-    Open [the project map](/using/project-map) and shape the draft into your real plan: drag enablers onto the phase they belong to, rename what reads badly, delete what is not real, add what is missing.
-
-    Already have a plan in Linear, Trello or a document? Do not retype it — see [Bringing in existing work](/using/importing-your-work).
-  </Step>
-
-  <Step title="Look around">
-    Four surfaces, nothing installed:
-
-    - **[The project map](/using/project-map)** — your plan: phases, enablers and cards.
-    - **[The factory map](/using/factory-map)** — your system: modules and how they connect.
-    - **[Alice](/using/alice-chat)**, bottom right — ask "where are we?", "what needs me?", "why did we do X?"
-    - **[Needs you](/using/needs-you)** — the one queue where things wait for your judgment.
-
-    Press `?` at any point for the [keyboard shortcuts](/using/shortcuts).
+    Your workspace holds your project's live map and its memory: everything decided, everything done, everything pending. It starts empty.
   </Step>
 
   <Step title="Connect your agent">
-    Alice.In plugs into the [Claude Code](https://claude.com/claude-code) you already use, on your own machine and your own account. **Connect a repo** in the app walks you through it.
+    Have [Claude Code](https://claude.com/claude-code) — or Codex, or Grok Build — installed and signed in first, on your own account. You also need Node 18 or newer.
 
-    Once connected, say **"get the alicein context"** in any session and your agent knows the whole project. Hand it work with [the agent queue](/using/agent-queue).
+    On the project map, open the **⚙** at the bottom right, press **Open** on *Connect a repo*, choose which agent you use, and press **Generate install command**. Paste the one-liner into a terminal inside the repo you work in.
+
+    Check it took: run `/mcp` in Claude Code and you should see **alicein**. Full detail, including the Codex and Grok quirks, in [Connect your agent](/using/connect-your-agent).
   </Step>
 
+  <Step title="Let it onboard you">
+    In that session:
+
+    ```text
+    /alice-onboard
+    ```
+
+    It lists your repos and asks which are this project, reads them locally, then interviews you in short rounds — each question carrying the answer it would give, so you can agree by exception.
+
+    Out of that come three things, each shown to you for a yes before it is saved: **what your project is**, **your plan** as phases and enablers, and **your factory map**. See [Onboarding](/using/onboarding).
+
+    Already track work in Linear? Say so during the interview and it comes across in the same session.
+  </Step>
+
+  <Step title="Correct it on the map">
+    Refresh the app and open [the project map](/using/project-map). Drag enablers onto the phase they belong to, rename what reads badly, delete what is not real.
+
+    Expect the draft to be roughly right and specifically wrong. That is the point — correcting a draft takes minutes, and a blank page takes a week.
+  </Step>
+
+  <Step title="Look around">
+    Three views and a chat:
+
+    - **[The project map](/using/project-map)** — your plan: phases, enablers and cards.
+    - **[The factory map](/using/factory-map)** — your system: what its parts are and how they connect.
+    - **[The knowledge view](/using/knowledge)** — everything your project knows, and what led to what.
+    - **[Alice](/using/alice-chat)**, bottom right — "where are we?", "what needs me?", "why did we do X?"
+
+    [Needs you](/using/needs-you) is the one queue where things wait for your judgment. Press `?` for the [keyboard shortcuts](/using/shortcuts).
+  </Step>
+
+  <Step title="Hand it work">
+    Press **Queue for agent** on a card. In a terminal, say **"check my alicein queue"** — the card arrives with its full context pack, and comes back to you for review. See [the agent queue](/using/agent-queue).
+  </Step>
 </Steps>
 
 ## Your first hour, if you want a path
 
-1. **Correct the draft.** Ten minutes on the map: right phases, right names, nothing fictional left in it.
-2. **Write down one decision** you have already made, and why, on the card it belongs to. That is the record starting.
-3. **Connect your agent**, say "get the alicein context", and ask it what it thinks you should do next. The answer tells you how good your plan is.
-4. **Queue one card** and let it do the work. Watch it come back for review.
+1. **Onboard**, and be honest in the interview — the questions with a *why* in the answer are the ones worth the time.
+2. **Correct the draft** on the map: right phases, right names, nothing fictional left in it.
+3. **Ask your agent what you should do next.** The answer tells you how good your plan is.
+4. **Queue one card** and let it work. Watch it come back for review.
 
 ## What to expect
 
-- **Your agent runs on your machine and your own Claude subscription.** We never see it or spend it.
+- **Your agent runs on your machine and your own subscription.** We never see it or spend it.
+- **The reading step is local.** No model sees your code but your own agent.
 - **Your workspace is isolated per account.** We export or delete everything on request.

@@ -3,37 +3,47 @@ title: "The factory map"
 description: "Your system as a place you can walk through."
 ---
 
-Point Alice.In at a repository and it infers the shape of your system: services, libraries, local tools and the external services you depend on. The result is a map you can walk, not a diagram someone drew once and forgot.
+The factory map exists to answer one question: **what is this system, and how do its parts fit together?** Architecture you can walk rather than a diagram someone drew once and stopped maintaining.
 
-## First run
+That is its main job. Everything else on it — the activity, the flows, the questions you can ask a building — is there because once your system is a place, those things have somewhere to live.
 
-The map builds itself in front of you the first time — watch it construct. It takes about a minute.
+## Where it comes from
 
-You do not draw anything. Alice.In reads the code and infers the structure: what is a service, what is a library, what is a tool you run locally, and what you depend on from outside.
+Your agent draws it during [onboarding](/using/onboarding). It reads your repos, proposes two to four districts and a handful of modules, ties each one to files it actually saw, and shows you the list before saving. You approve names you would use — "Shift store", not "Backend".
+
+Nobody draws boxes by hand, and nothing is invented: a module that claims files has files.
 
 ## Reading it
 
-- **Modules** are laid out in districts, with the external services you call sitting on the outer ring.
+- **Modules** are the parts of your system, grouped into districts. The outer ring is everything external you depend on.
 - **Edges** are the connections between them, typed: `HTTP`, `MCP`, `OTEL`, `WS`, `DEP`.
-- **Tiers** distinguish a service from a library, a local tool, or something external.
+- **Tiers** separate a service from a library, from a tool you run locally, from something outside your control.
 
-## Peeling it back
+## Peel it back until it answers one question
 
-Behind the gear you can toggle each connection type and each module tier on and off. A map showing everything at once shows nothing, so turn layers off until only the question you are asking is left. Your choices persist between sessions.
+Behind the gear, every connection type and every module tier toggles on and off. A map showing everything at once shows nothing — turn layers off until only the question you are asking is left. Your choices persist between sessions.
 
-Hover or click a module and only *its* edges label themselves — no global clutter.
+Hover or click a module and only *its* edges label themselves, so you get the local picture without the global clutter.
 
-## The module panel
+## Ask a building what it does
 
-Click any module for what it is, what it connects to, which files belong to it, and what is happening inside it now. Ask a question there and the answer comes back grounded in the real files, with receipts.
+Click any module for what it is, what it connects to, which files belong to it, and what is happening inside it right now.
+
+Ask a question there — "what is this for?", "what breaks if I change it?" — and the answer comes back grounded in that module's real files and records, showing you which ones it read. Not an impression of your code. The code.
+
+This is the fastest route into an unfamiliar part of a system, including your own six months on.
 
 ## Flows and the walkthrough
 
-- **Flows** are curated stories of how data actually moves through your system, played out on the map.
-- **The walkthrough** is a guided first tour. Dismiss it any time; it will not come back uninvited.
+- **Flows** are stories of how data actually moves through your system, played out across the map rather than described in a paragraph.
+- **The walkthrough** is a guided first tour. Dismiss it any time; it does not come back uninvited.
 
-## Recent work shows on the map
+## Recent work lights it up
 
-Once you have [connected your agent](/using/connect-your-agent), the commits it records are matched against your modules by the files they touched. A module that has been worked on recently reads as active, and one worked on in the last day reads as fresh.
+Once your agent is [connected](/using/connect-your-agent), every commit it records is matched to your modules by the files it touched. A module worked on recently reads as active; one worked on today reads as fresh.
 
-Over a week, the map shows you where the effort actually went — which is not always where you thought it went.
+Over a week the map shows where your effort actually went, which is not always where you thought it went.
+
+<Note>
+Beta maps do not yet redraw themselves as your code drifts. If a repo changes shape substantially, ask your agent to update the map.
+</Note>

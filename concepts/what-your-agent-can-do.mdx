@@ -1,0 +1,57 @@
+---
+title: "What your agent can do"
+description: "The tools Alice.In gives your agent, and the limits on them."
+---
+
+Connecting your agent adds a set of tools to it. You never call these yourself — you ask for things in plain language and your agent picks. Knowing what exists is still worth five minutes, because it tells you what is reasonable to ask for.
+
+They fall into four groups, and the split between the first three and the fourth is the whole governance model.
+
+## Orienting
+
+- **Get the whole picture.** One call returns your phases and progress, recent activity, recent decisions, what is queued for it, and your standing documents. This is what "get the alicein context" triggers.
+- **Get one module's picture.** A deep slice of a single part of your system — its files, its design documents, the technical history, the known traps — instead of re-reading your code cold.
+- **Read any record in full.** The orientation call is an index; this opens the body of any decision, plan, knowledge document or event by ID.
+- **Search, and follow links.** Find records by text, then walk from one to its neighbours along the recorded relationships.
+- **Read what is attached to a file.** Whatever your project already learned about a specific file or module.
+
+## Capturing
+
+- **Record what happened** — a conclusion reached, a dead end hit, a direction changed, linked to the card or decision it touches.
+- **Attach a note to a place** — one or two sentences bound to a file, module or card, handed to whichever agent opens that thing next.
+- **Record a lesson** — a rule that should outlive this session, which has to cite the event that taught it.
+- **File a document** — research, a runbook, an analysis, a design.
+
+Capture is not a tidy-up at the end of a session. Your agent is prompted to do it as it goes, which is why you get the reasoning rather than a summary of the reasoning.
+
+## Working the board
+
+- **Create, split, rename, re-parent and comment on cards.** Ordinary work — your agent shapes the board the way you would.
+- **Take queued work.** List what you queued, pull the top card with its full context pack.
+- **Deliver work back.** Finishing a card sends it to you for review with a comment on what you will see.
+
+## Proposing — and what it cannot do
+
+Three things stay yours, and the tools enforce it rather than merely advising it:
+
+<CardGroup cols={3}>
+  <Card title="Ratifying" icon="stamp">
+    Changes to decisions, your goal tree's structure and configuration are filed as proposals into [Needs you](/using/needs-you). Filing is not approving.
+  </Card>
+  <Card title="Closing" icon="check">
+    Your agent delivers; only you close. It cannot mark its own work done.
+  </Card>
+  <Card title="Deleting" icon="trash">
+    Never your agent's call, and deletion is soft in any case — nothing is truly destroyed.
+  </Card>
+</CardGroup>
+
+Two more guards worth knowing, both from [onboarding](/using/onboarding): writing your standing documents or seeding your plan requires that you were shown the exact text first, within the last half hour. Change the text after you approved it and the write is refused.
+
+<Note>
+A refused write is the system working. If your agent tells you a write was refused, it has hit a boundary you own — not a bug.
+</Note>
+
+## What it never touches
+
+Credentials. Not your Claude account, not your repository tokens, not tokens for any other tool you connect. The tools carry your project's record and nothing else.

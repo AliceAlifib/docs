@@ -9,7 +9,19 @@ description: "The things that go wrong first."
   </Accordion>
 
   <Accordion title="Connecting my agent did not work">
-    Connect from your project's folder rather than your home directory, and make sure Claude Code is installed and signed in first.
+    Run the install command from your project's folder rather than your home directory, and make sure your agent is installed and signed in first. The installer needs **Node 18 or newer** and says so if it is missing.
+  </Accordion>
+
+  <Accordion title="My agent connects but says it has no token">
+    The token lives in `.claude/alice/config.json`, not in `.mcp.json` — a helper command reads it when your agent connects. That needs Claude Code 2.1.193 or newer. On an older build, reinstall with the fallback that writes the token into `.mcp.json` directly, and keep the repo private.
+  </Accordion>
+
+  <Accordion title="Onboarding says it read nothing for one of my repos">
+    It was given a repository name where it needed a path to a checkout on your machine, or that repo is not cloned here. Either clone it and run the reading step again, or leave it out and tell your agent about it in the interview — but do not let an unread repo pass as a small one.
+  </Accordion>
+
+  <Accordion title="Onboarding refused to save my plan">
+    Two guards, both deliberate. A save needs you to have been shown the exact text within the last half hour — if you asked for a change after approving, your agent must show you the changed version first. And if your workspace already has real content, seeding refuses rather than overwriting it; things get added one at a time instead.
   </Accordion>
 
   <Accordion title="I queued a card and nothing happened">
@@ -29,7 +41,11 @@ description: "The things that go wrong first."
   </Accordion>
 
   <Accordion title="My factory map looks out of date">
-    Maps do not yet redraw themselves as a repository drifts. If your code has changed shape substantially, the map needs rebuilding.
+    Beta maps do not yet redraw themselves as a repository drifts. If your code has changed shape substantially, ask your agent to update the map.
+  </Accordion>
+
+  <Accordion title="A record has no corrections — is it current?">
+    Not necessarily, and [the knowledge view](/using/knowledge) says so rather than implying otherwise. No recorded correction means nobody has written one down. If a record matters and looks old, check it against what you can see.
   </Accordion>
 
   <Accordion title="The screen is blurred and there is an overlay">
