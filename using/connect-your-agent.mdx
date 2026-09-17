@@ -11,11 +11,19 @@ Have your agent installed and signed in first — [Claude Code](https://claude.c
 
 You also need **Node 18 or newer**, because the capture hooks are Node scripts. The installer checks and stops with a clear message if it is missing.
 
-## Installing
+## The first time
 
-On the project map, open the **⚙** at the bottom right, beside the agent-queue button, and press **Open** on *Connect a repo*.
+Sign in from the invite at [alicein.app/start](https://alicein.app/start). Google, then the Connect page. That page already provisioned your workspace; the command on it already includes your token.
 
-The panel shows your door URL, the repos already connected, and a row of agent buttons — **Both**, **Claude Code**, **Codex** or **Grok Build**. Press **Generate install command**, and paste the one-liner into a terminal inside the repo you want your agent to work in.
+Pick **macOS / Linux** or **Windows** on that page, press **Copy command**, and paste it into a terminal *inside the repo you work in*. You do not need to copy the token separately — it is already in the line. Reveal it on the page only if you are wiring something by hand.
+
+The first-run command wires Claude Code and Codex together (Grok rides the same files). Unused config just sits there.
+
+## Installing another repo later
+
+Once you can see the project map, open the **⚙** at the bottom right, beside the agent-queue button, and press **Open** on *Connect a repo*.
+
+The panel shows your door URL, the repos already connected, and a row of agent buttons — **Both**, **Claude Code**, **Codex** or **Grok Build**. Press **Generate install command**, and paste the one-liner into a terminal inside that repo.
 
 <CodeGroup>
 ```bash macOS, Linux, Git Bash
@@ -37,7 +45,7 @@ curl -fsSL https://<your-hub>/install.sh | sh -s -- --token <your-token> --url h
 
 Add `--dir <path>` to target a different folder. Re-running is safe — it updates in place and never duplicates anything.
 
-You can connect as many repositories as you like. **Connect a repo** lists what is already connected, and each install command carries its own token, so revoking one repo leaves the others working.
+You can connect as many repositories as you like. **Connect a repo** lists what is already connected. They share the same workspace token — it is one project, several checkouts.
 
 ## What gets installed
 

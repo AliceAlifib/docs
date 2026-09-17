@@ -6,18 +6,20 @@ description: "From a link to a project your agent knows."
 Setting up is a conversation with your own coding agent. It reads your repos, asks you what it could not read, and writes your project down — you correct it rather than filling it in.
 
 <Steps>
-  <Step title="Open your workspace">
-    We send you a link and a **token**. Keep the token like a password — it is what identifies your workspace.
+  <Step title="Open the invite">
+    We send you a link: [alicein.app/start](https://alicein.app/start). Sign in with Google. That is the whole first step — there is no separate token to keep.
 
-    Your workspace holds your project's live map and its memory: everything decided, everything done, everything pending. It starts empty.
+    You land on a **Connect** page. It has already made your workspace, and the command on the page already carries your token. Treat that command like a password; do not paste it into a chat or a ticket.
+
+    The workspace starts empty. It holds your project's live map and its memory once you fill it in.
   </Step>
 
   <Step title="Connect your agent">
     Have [Claude Code](https://claude.com/claude-code) — or Codex, or Grok Build — installed and signed in first, on your own account. You also need Node 18 or newer.
 
-    On the project map, open the **⚙** at the bottom right, press **Open** on *Connect a repo*, choose which agent you use, and press **Generate install command**. Paste the one-liner into a terminal inside the repo you work in.
+    On the Connect page, pick **macOS / Linux** or **Windows**, press **Copy command**, and paste it into a terminal *inside the repo you work in* — not your home folder, not the browser's address bar.
 
-    Check it took: run `/mcp` in Claude Code and you should see **alicein**. Full detail, including the Codex and Grok quirks, in [Connect your agent](/using/connect-your-agent).
+    Check it took: run `/mcp` in Claude Code and you should see **alicein**. In Grok, `grok inspect`. Full detail, including adding a second repo later, in [Connect your agent](/using/connect-your-agent).
   </Step>
 
   <Step title="Let it onboard you">

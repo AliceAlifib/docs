@@ -8,8 +8,12 @@ description: "The things that go wrong first."
     Ask it to **"get the alicein context"** explicitly. If it says it has no such tool, the connection is not registered: check that `.mcp.json` exists in the folder you started the session from, and restart the session — Claude Code reads it at startup.
   </Accordion>
 
+  <Accordion title="I never received a token">
+    You are not meant to. We send [alicein.app/start](https://alicein.app/start). After Google, the Connect page shows one command that already carries your token. Copy that command, not a separate secret. If the page says it cannot reach Alice.In, wait a minute and refresh — there is nothing to paste until the command appears.
+  </Accordion>
+
   <Accordion title="Connecting my agent did not work">
-    Run the install command from your project's folder rather than your home directory, and make sure your agent is installed and signed in first. The installer needs **Node 18 or newer** and says so if it is missing.
+    Run the install command from your project's folder rather than your home directory, and make sure your agent is installed and signed in first. The installer needs **Node 18 or newer** and says so if it is missing. On Windows, use the PowerShell line from the Connect page (or the Windows tab), not `curl … | sh`.
   </Accordion>
 
   <Accordion title="My agent connects but says it has no token">
