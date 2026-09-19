@@ -19,6 +19,17 @@ Pick **macOS / Linux** or **Windows** on that page, press **Copy command**, and 
 
 The first-run command wires Claude Code and Codex together (Grok rides the same files). Unused config just sits there.
 
+## What that command actually does
+
+It does not install an AI. It does not run a daemon. It writes a handful of files into **that repo**:
+
+1. Points your agent at Alice.In over the network (the “door”), with a token that lives in a gitignored config file — not in the shared `.mcp.json`.
+2. Drops in a short brief and four hooks (commit, first prompt, stop, file briefing) so work lands in the project record as you go.
+3. **Adds** one line to your existing `CLAUDE.md`. For Codex and Grok it **prepends** a managed block to `AGENTS.md` — their files are read from the top, so a line at the bottom would never load. Your own instructions stay.
+4. Adds `/alice-onboard` for Claude Code. Codex and Grok say “onboard this project” instead.
+
+Re-running is safe. It never replaces your house rules.
+
 ## Installing another repo later
 
 Once you can see the project map, open the **⚙** at the bottom right, beside the agent-queue button, and press **Open** on *Connect a repo*.
@@ -54,10 +65,11 @@ Plain files, all of them readable, editable and deletable:
 | | |
 |---|---|
 | `.mcp.json` | Registers the connection. Any MCP servers you already had are kept. |
-| `.claude/alice/` | Your agent's brief, the capture hooks, and your config. |
-| `CLAUDE.md` | One line that loads the brief every session. |
+| `.claude/alice/` | Your agent's brief, the capture hooks, and your config (token stays gitignored). |
+| `CLAUDE.md` | One extra line that loads the brief. Your existing file is not replaced. |
+| `AGENTS.md` | A managed block at the top for Codex and Grok. Your rules stay below it. |
 | `.claude/settings.json` | Four lightweight hooks that keep your workspace in sync as you work. |
-| `.claude/skills/alice-onboard` | The `/alice-onboard` command. Codex and Grok reach the same flow through `AGENTS.md`. |
+| `.claude/skills/alice-onboard` | The `/alice-onboard` command. Codex and Grok say “onboard this project”. |
 
 Nothing runs in the background, and nothing about your existing setup changes.
 
