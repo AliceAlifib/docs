@@ -19,12 +19,14 @@ Pick **macOS / Linux** or **Windows** on that page, press **Copy command**, and 
 
 The first-run command wires Claude Code and Codex together (Grok rides the same files). Unused config just sits there.
 
+When it finishes, it prints a short summary: which agents it connected, that your token is kept private, and what to do next — start Claude Code in that folder and type `/alice-onboard`. If it also wired Codex, it adds one first-time step for Codex, covered [below](#if-you-use-codex-or-grok).
+
 ## What that command actually does
 
 It does not install an AI. It does not run a daemon. It writes a handful of files into **that repo**:
 
 1. Points your agent at Alice.In over the network (the “door”), with a token that lives in a gitignored config file — not in the shared `.mcp.json`.
-2. Drops in a short brief and four hooks (commit, first prompt, stop, file briefing) so work lands in the project record as you go.
+2. Drops in a short brief and a few small hooks — on commits, prompts, file reads and the end of each turn — so work lands in the project record as you go.
 3. **Adds** one line to your existing `CLAUDE.md`. For Codex and Grok it **prepends** a managed block to `AGENTS.md` — their files are read from the top, so a line at the bottom would never load. Your own instructions stay.
 4. Adds `/alice-onboard` for Claude Code. Codex and Grok say “onboard this project” instead.
 
@@ -68,7 +70,7 @@ Plain files, all of them readable, editable and deletable:
 | `.claude/alice/` | Your agent's brief, the capture hooks, and your config (token stays gitignored). |
 | `CLAUDE.md` | One extra line that loads the brief. Your existing file is not replaced. |
 | `AGENTS.md` | A managed block at the top for Codex and Grok. Your rules stay below it. |
-| `.claude/settings.json` | Four lightweight hooks that keep your workspace in sync as you work. |
+| `.claude/settings.json` | Small hooks that keep your workspace in sync as you work. |
 | `.claude/skills/alice-onboard` | The `/alice-onboard` command. Codex and Grok say “onboard this project”. |
 
 Nothing runs in the background, and nothing about your existing setup changes.
@@ -84,6 +86,20 @@ This needs Claude Code 2.1.193 or newer. On an older build the installer can fal
 <Warning>
 **Codex asks you to trust twice** the first time you open it in the repo — once for the folder, once for the hooks file. Accept both. An untrusted folder loads no tools at all, and nothing tells you why.
 </Warning>
+
+**Codex also needs your token in its environment.** Claude Code reads it from the private config file; Codex can only take it from a variable. You still do not copy it — the install saved it in `.codex/alice/config.json`, and the line it prints reads it from there. Run it in the terminal you start Codex from, inside the repo:
+
+<CodeGroup>
+```powershell Windows PowerShell
+$env:ALICEIN_DOOR_TOKEN = (Get-Content .codex/alice/config.json | ConvertFrom-Json).token
+```
+
+```bash macOS, Linux, Git Bash
+export ALICEIN_DOOR_TOKEN="$(node -p 'require("./.codex/alice/config.json").token')"
+```
+</CodeGroup>
+
+It lasts as long as that terminal. In a new one, run it again before starting Codex.
 
 **Grok Build** reads Claude Code's files, so the install puts the same wiring in place plus a brief Grok can load. Trust the folder the first time you open it, then run `grok inspect` to see the door, the brief and the hooks it found.
 
@@ -127,7 +143,7 @@ Any card offers its context as markdown you can copy into Cursor, ChatGPT, or wh
 
 ## Uninstalling
 
-A minute by hand: delete `.claude/alice/` and `.claude/skills/alice-onboard/`, remove the `@.claude/alice/ALICE-COFOUNDER.md` line from `CLAUDE.md`, remove the `alicein` entry from `.mcp.json`, and remove the four `.claude/alice/hooks.mjs` entries from `.claude/settings.json`. Then restart your agent.
+A minute by hand: delete `.claude/alice/` and `.claude/skills/alice-onboard/`, remove the `@.claude/alice/ALICE-COFOUNDER.md` line from `CLAUDE.md`, remove the `alicein` entry from `.mcp.json`, and remove the entries that point into `.claude/alice/` from `.claude/settings.json`. If Codex was wired too, delete `.codex/alice/`, remove the Alice.In entries from `.codex/hooks.json`, and delete the marked Alice.In blocks in `.codex/config.toml` and at the top of `AGENTS.md`. Then restart your agent.
 
 <Note>
 We never see or spend your Claude account, and we never ask for its credentials.
