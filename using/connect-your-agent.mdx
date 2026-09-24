@@ -1,13 +1,13 @@
 ---
 title: "Connect your agent"
-description: "Wire the coding agent you already use into your project record."
+description: "Claude, Codex, Cursor, or Grok — one workspace."
 ---
 
-Alice.In does not run an AI agent for you. It connects to the agent you already use, on your machine and your own subscription. [Claude Code](https://claude.com/claude-code) is the fullest experience; Codex and Grok reach the same workspace.
+Alice.In connects to the agent you already use, on your machine and your own subscription. [Claude Code](https://claude.com/claude-code) is the fullest experience; Codex and Grok reach the same workspace.
 
 ## Before you start
 
-Have your agent installed and signed in first — [Claude Code](https://claude.com/claude-code), Codex or Grok Build, on your own account. Alice.In connects to it; it does not install it for you.
+Have your agent installed and signed in first — [Claude Code](https://claude.com/claude-code), Codex, or Grok Build, on your own account. Alice.In does not install it for you.
 
 You also need **Node 18 or newer**, because the capture hooks are Node scripts. The installer checks and stops with a clear message if it is missing.
 
@@ -17,7 +17,7 @@ Sign in from the invite at [alicein.app/start](https://alicein.app/start). Googl
 
 Pick **macOS / Linux** or **Windows** on that page, press **Copy command**, and paste it into a terminal *inside the repo you work in*. You do not need to copy the token separately — it is already in the line. Reveal it on the page only if you are wiring something by hand.
 
-The first-run command wires Claude Code and Codex together (Grok rides the same files). Unused config just sits there.
+The first-run command sets up Claude Code and Codex together (Grok uses the same files). Unused config just sits there.
 
 ## What that command actually does
 
@@ -94,7 +94,7 @@ Neither has a per-repo skills folder, so they reach [onboarding](/using/onboardi
 - Run `/mcp` in Claude Code. **alicein** should be listed. In Grok, `grok inspect`.
 - Ask **"where are we?"**. It should answer from your real project — your phases, recent activity, anything queued for it — not from a blank slate.
 
-If your workspace is still empty, this is the moment to run [`/alice-onboard`](/using/onboarding). The map itself is [alicein.app/workspace](https://alicein.app/workspace).
+If the workspace is still empty, run [`/alice-onboard`](/using/onboarding). The map is [alicein.app/workspace](https://alicein.app/workspace).
 
 ## What changes in your sessions
 
