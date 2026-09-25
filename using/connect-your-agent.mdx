@@ -1,13 +1,13 @@
 ---
 title: "Connect your agent"
-description: "Claude, Codex, Cursor, or Grok — one workspace."
+description: "Claude Code, Codex, or Grok — one workspace."
 ---
 
-Alice.In connects to the agent you already use, on your machine and your own subscription. [Claude Code](https://claude.com/claude-code) is the fullest experience; Codex and Grok reach the same workspace.
+Alice.In connects to the agent you already use, on your machine and your own subscription. Claude Code is the fullest experience; Codex and Grok reach the same workspace.
 
 ## Before you start
 
-Have your agent installed and signed in first — [Claude Code](https://claude.com/claude-code), Codex, or Grok Build, on your own account. Alice.In does not install it for you.
+Have your agent installed and signed in first — Claude Code, Codex, or Grok Build, on your own account. Alice.In does not install it for you.
 
 You also need **Node 18 or newer**, because the capture hooks are Node scripts. The installer checks and stops with a clear message if it is missing.
 
@@ -28,7 +28,7 @@ It does not install an AI. It does not run a daemon. It writes a handful of file
 3. **Adds** one line to your existing `CLAUDE.md`. For Codex and Grok it **prepends** a managed block to `AGENTS.md` — their files are read from the top, so a line at the bottom would never load. Your own instructions stay.
 4. Adds `/alice-onboard` for Claude Code. Codex and Grok say “onboard this project” instead.
 
-Re-running is safe. It never replaces your house rules.
+Re-running is safe. It never replaces your house rules. When we ship a new brief, paste the same Copy command in the same repo — do not run `/alice-onboard` again.
 
 ## Installing another repo later
 
