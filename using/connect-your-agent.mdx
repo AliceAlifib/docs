@@ -28,13 +28,13 @@ It does not install an AI. It does not run a daemon. It writes a handful of file
 3. **Adds** one line to your existing `CLAUDE.md`. For Codex and Grok it **prepends** a managed block to `AGENTS.md` — their files are read from the top, so a line at the bottom would never load. Your own instructions stay.
 4. Adds `/alice-onboard` for Claude Code. Codex and Grok say “onboard this project” instead.
 
-Re-running is safe. It never replaces your house rules. When we ship a new brief, paste the same Copy command in the same repo — do not run `/alice-onboard` again.
+Re-running is safe. It never replaces your house rules. A new brief arrives on your next session. A new capture sentence arrives only when you paste the same command again in that repo. Do not run `/alice-onboard` again.
 
 ## Installing another repo later
 
-Once you can see the project map, open the **⚙** at the bottom right, beside the agent-queue button, and press **Open** on *Connect a repo*.
+Go back to [alicein.app/connect](https://alicein.app/connect). That page still has your command, with the same token. Paste it into a terminal inside the other repo.
 
-The panel shows your door URL, the repos already connected, and a row of agent buttons — **Both**, **Claude Code**, **Codex** or **Grok Build**. Press **Generate install command**, and paste the one-liner into a terminal inside that repo.
+The command on that page is the one to copy. The two lines below are only the shape of it:
 
 <CodeGroup>
 ```bash macOS, Linux, Git Bash
@@ -50,13 +50,11 @@ curl -fsSL https://<your-hub>/install.sh | sh -s -- --token <your-token> --url h
 `curl … | sh` does not run in PowerShell, which is why there are two lines. Everything underneath is the same plain Node script either way.
 </Note>
 
-**Which agent button to pick.** *Both* is the default and wires Claude Code and Codex together — if you have one of them, the unused config just sits there doing nothing. The named buttons exist so the line you copy talks about the agent you actually use.
+The command wires Claude Code and Codex together. If you have one of them, the unused config just sits there. Grok Build reads those same files, with one exception: it cannot follow the `@import` line in `CLAUDE.md`, so the installer also writes the brief where Grok can read it.
 
-**Grok Build users should pick Grok Build**, not Claude Code. Grok reads Claude Code's wiring natively, with one exception: it cannot follow the `@import` line in `CLAUDE.md`, so picking *Claude Code* leaves you with the connection and the hooks but no brief at all. The Grok option inlines it instead.
+Add `--dir <path>` to target a different folder. Re-running is safe. It updates in place and never duplicates anything.
 
-Add `--dir <path>` to target a different folder. Re-running is safe — it updates in place and never duplicates anything.
-
-You can connect as many repositories as you like. **Connect a repo** lists what is already connected. They share the same workspace token — it is one project, several checkouts.
+You can connect as many repositories as you like. They share the same workspace token. It is one project, several checkouts.
 
 ## What gets installed
 
@@ -68,7 +66,7 @@ Plain files, all of them readable, editable and deletable:
 | `.claude/alice/` | Your agent's brief, the capture hooks, and your config (token stays gitignored). |
 | `CLAUDE.md` | One extra line that loads the brief. Your existing file is not replaced. |
 | `AGENTS.md` | A managed block at the top for Codex and Grok. Your rules stay below it. |
-| `.claude/settings.json` | Four lightweight hooks that keep your workspace in sync as you work. |
+| `.claude/settings.json` | The hooks that record a commit, brief a file, and ask for the why at the end of a turn. |
 | `.claude/skills/alice-onboard` | The `/alice-onboard` command. Codex and Grok say “onboard this project”. |
 
 Nothing runs in the background, and nothing about your existing setup changes.
@@ -93,6 +91,7 @@ Neither has a per-repo skills folder, so they reach [onboarding](/using/onboardi
 
 - Run `/mcp` in Claude Code. **alicein** should be listed. In Grok, `grok inspect`.
 - Ask **"where are we?"**. It should answer from your real project — your phases, recent activity, anything queued for it — not from a blank slate.
+- The first time the agent edits a file, Claude Code shows **Stop hook error** and Codex shows **Stop Failed**. That is Alice holding the turn so the agent writes down what changed. The commit is already recorded. The extra turn is the why.
 
 If the workspace is still empty, run [`/alice-onboard`](/using/onboarding). The map is [alicein.app/workspace](https://alicein.app/workspace).
 
@@ -103,7 +102,7 @@ If the workspace is still empty, run [`/alice-onboard`](/using/onboarding). The 
     Your agent starts knowing the whole project — phases, active work, recent decisions, what is waiting on you.
   </Card>
   <Card title="It leaves a record" icon="pen">
-    Work normally. It captures what it did and why as it goes, so nothing you build stays unexplained.
+    Work normally. When a change has a conclusion, the agent writes that down. A commit is recorded on its own. The Stop message on the first edit is Alice asking for the why.
   </Card>
   <Card title="Files brief it as it opens them" icon="file-lines">
     The moment it reads or edits a file, whatever your project already learned about that file is handed to it. If nothing is recorded, it says so plainly — so "nothing known" never looks like "not working".
@@ -114,8 +113,8 @@ If the workspace is still empty, run [`/alice-onboard`](/using/onboarding). The 
   <Card title="Commits light the map" icon="code-commit">
     Every commit is captured and matched to the part of your system it touched. You add the why.
   </Card>
-  <Card title="It proposes, you decide" icon="check">
-    Changes to plans and decisions land in [Needs you](/using/needs-you) for you to ratify. Nothing structural changes without you.
+  <Card title="You say it, it happens" icon="check">
+    In the chat, a plan change and a decision happen when you say them. [Needs you](/using/needs-you) is a card the agent delivered, and anything it parked because you were not there.
   </Card>
 </CardGroup>
 
@@ -127,7 +126,7 @@ Any card offers its context as markdown you can copy into Cursor, ChatGPT, or wh
 
 ## Uninstalling
 
-A minute by hand: delete `.claude/alice/` and `.claude/skills/alice-onboard/`, remove the `@.claude/alice/ALICE-COFOUNDER.md` line from `CLAUDE.md`, remove the `alicein` entry from `.mcp.json`, and remove the four `.claude/alice/hooks.mjs` entries from `.claude/settings.json`. Then restart your agent.
+A minute by hand: delete `.claude/alice/`, `.codex/alice/`, and `.claude/skills/alice-onboard/`. Remove the `@.claude/alice/ALICE-PROTOCOL.md` line from `CLAUDE.md`. Remove the managed Alice block from the top of `AGENTS.md`. Remove the `alicein` entry from `.mcp.json`. In `.claude/settings.json` and `.codex/config.toml`, remove every entry whose command runs `.claude/alice/` or `.codex/alice/`. Then restart your agent.
 
 <Note>
 We never see or spend your Claude account, and we never ask for its credentials.
