@@ -1,0 +1,52 @@
+---
+title: "Security"
+description: "Where a workspace lives, who can open it, and how to get it back or remove it."
+---
+
+Alice.In is in beta. This page describes the workspace you get from [alicein.app/start](https://alicein.app/start). It is not a SOC 2 report. We do not have one.
+
+## What we store
+
+The workspace holds the project record your agent writes: the plan, what happened, decisions, research, and notes. Sign-in stores the Google account's email and name.
+
+Your repositories stay on your computer. The agent reads them there. A file reaches us only if the agent writes it into the record.
+
+We do not ask for your Claude, Codex, or Grok key. The install command on Connect contains a token for your workspace. Treat that command like a password.
+
+We do not take audio. Voice controls are not part of the beta.
+
+## Where it lives
+
+The service runs on Fly.io, in the San Jose region. Two disks:
+
+- The workspace itself, on the hub.
+- The account (Google identity and the token that opens the workspace), on the login app.
+
+Both disks are encrypted at rest. The sites are served over HTTPS. Checked 6 October 2026: both volumes reported `ENCRYPTED: true`.
+
+Fly takes a daily snapshot of each disk and keeps it for five days. That is a recovery copy, not a second live workspace. A failure can lose what was written after the last snapshot.
+
+## Who else sees it
+
+| Who | What they see |
+|---|---|
+| Google | Email and name, for sign-in. |
+| Microsoft Azure OpenAI | A question you ask in the in-app chat, and the parts of the workspace used to answer it. |
+| Your own coding agent | Whatever that agent fetches, under your account with Anthropic, OpenAI, or xAI. We do not send the workspace to those companies ourselves. |
+| Alice.In | The people who operate the service can open a workspace to keep it running or to help you. |
+
+We do not use a workspace to train a model.
+
+## A company of a few people
+
+One Google account is one workspace. There is no invite for a teammate yet. For a company beta, one person owns the workspace. That person should have the company's permission to put the work there.
+
+## Export and deletion
+
+Email [hi@alice.in](mailto:hi@alice.in). We send a copy of the workspace, or we remove the live copy, or both. There is no button for this yet.
+
+A snapshot already taken can remain for up to five days after the live copy is removed. Then it expires.
+
+## What this is not
+
+No penetration test, no uptime promise, no completed security audit. The beta can be down, and it can change. The terms of that are in [Beta terms](/beta-terms). What we do with the workspace is in [How we handle the workspace](/data-processing).

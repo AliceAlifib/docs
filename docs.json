@@ -49,6 +49,14 @@
             "pages": [
               "troubleshooting"
             ]
+          },
+          {
+            "group": "For your company",
+            "pages": [
+              "security",
+              "beta-terms",
+              "data-processing"
+            ]
           }
         ]
       }
@@ -60,6 +68,10 @@
   },
   "navbar": {
     "links": [
+      {
+        "label": "Security",
+        "href": "/security"
+      },
       {
         "label": "Support",
         "href": "mailto:hi@alice.in"

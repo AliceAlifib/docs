@@ -1,0 +1,50 @@
+---
+title: "How we handle the workspace"
+description: "What Alice.In does with a beta workspace, for the company that owns the work."
+---
+
+This is the note to give a company whose people use the beta. It is written in plain language. It is not a signed data-processing agreement. If your counsel needs a signature block, send it to [hi@alice.in](mailto:hi@alice.in) and we will put the legal name on it.
+
+Last updated 6 October 2026.
+
+## Who does what
+
+You decide what goes into the workspace. We process it to provide the beta: store it, show it, let your agent read and write it, answer in-app chat, help you, and delete or export it when you ask.
+
+Alice.In means the people who operate alicein.app and the hub at alicein-hub.fly.dev.
+
+## What is in it
+
+- Google email and name.
+- The project record your agent writes.
+- Questions you ask in the in-app chat.
+
+Source code stays on your machines unless an agent writes it into the record. We do not collect audio.
+
+Do not put passwords, access keys, or health data in the record. We do not scan for them. If one is written in, it is stored with the rest.
+
+## Where, and who else
+
+The disks are in Fly.io's San Jose region, encrypted at rest, served over HTTPS. Fly keeps a daily snapshot for five days.
+
+| Subprocessor | Why |
+|---|---|
+| Fly.io | Hosts the machines and the disks. |
+| Google | Sign-in. Receives email and name. |
+| Microsoft Azure OpenAI | Writes the in-app chat answer from the question and the records used to answer it. |
+
+Your coding agent runs on your own Claude, Codex, or Grok account. That provider sees what your agent sends them. That agreement is yours, not this one.
+
+We do not sell the workspace. We do not use it to train a model.
+
+## How long
+
+We keep the live workspace until you ask us to delete it, or until the beta ends and we tell you. After a deletion, a snapshot can remain for up to five days.
+
+## A team
+
+The workspace belongs to one Google account. There is no member list. The company should name the person who may put company work there.
+
+## Asking for something
+
+Export, deletion, or a question: [hi@alice.in](mailto:hi@alice.in).
