@@ -19,10 +19,10 @@ We do not take audio. Voice controls are not part of the beta.
 
 The service runs on Fly.io, in the San Jose region. Two disks:
 
-- The workspace itself, on the hub.
-- The account (Google identity and the token that opens the workspace), on the login app.
+- The workspace itself, on the hub. As of 8 October 2026 that app is in the Alice.In Fly org.
+- The account (Google identity and the token that opens the workspace), on the login app. That app is still on the older shared Fly org.
 
-Both disks are encrypted at rest. The sites are served over HTTPS. Checked 6 October 2026: both volumes reported `ENCRYPTED: true`.
+Both disks are encrypted at rest. The sites are served over HTTPS. Checked 8 October 2026: the workspace volume still reported `ENCRYPTED: true` after the move.
 
 Fly takes a daily snapshot of each disk and keeps it for five days. That is a recovery copy, not a second live workspace. A failure can lose what was written after the last snapshot.
 
@@ -43,9 +43,9 @@ One Google account is one workspace. There is no invite for a teammate yet. For 
 
 ## Export and deletion
 
-Email [hi@alice.in](mailto:hi@alice.in). We send a copy of the workspace, or we remove the live copy, or both. There is no button for this yet.
+Use the [contact form](https://tally.so/r/NpbDW0). We send a copy of the workspace, or we remove it, or both. There is no button for this yet.
 
-A snapshot already taken can remain for up to five days after the live copy is removed. Then it expires.
+Removing it includes the daily snapshots, so the copy does not sit there for the rest of the five days.
 
 ## What this is not
 
